@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import styles from "./ContactForm.module.css";
 
 const ContactForm = ({ onAddContact, existingContacts }) => {
   const initialValues = {
@@ -36,16 +37,32 @@ const ContactForm = ({ onAddContact, existingContacts }) => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      <Form>
-        <label htmlFor="name">Name</label>
-        <Field id="name" name="name" placeholder="Name" />
-        <ErrorMessage name="name" component="div" style={{ color: "red" }} />
+      <Form className={styles.form}>
+        <label htmlFor="name" className={styles.label}>
+          Name
+        </label>
+        <Field
+          id="name"
+          name="name"
+          placeholder="Name"
+          className={styles.input}
+        />
+        <ErrorMessage name="name" component="div" className={styles.error} />
 
-        <label htmlFor="number">Number</label>
-        <Field id="number" name="number" placeholder="Phone number" />
-        <ErrorMessage name="number" component="div" style={{ color: "red" }} />
+        <label htmlFor="number" className={styles.label}>
+          Number
+        </label>
+        <Field
+          id="number"
+          name="number"
+          placeholder="Phone number"
+          className={styles.input}
+        />
+        <ErrorMessage name="number" component="div" className={styles.error} />
 
-        <button type="submit">Add contact</button>
+        <button type="submit" className={styles.button}>
+          Add contact
+        </button>
       </Form>
     </Formik>
   );
